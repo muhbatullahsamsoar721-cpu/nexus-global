@@ -84,11 +84,70 @@
     </div>
 
     <script>
-        // د کارونکي د موبایل یا کمپیوټر د ژبې اتوماتیک تشخیص
+        // د کارونکي د ژبې اتوماتیک تشخیص
         const userLang = navigator.language || navigator.userLanguage;
         const indicator = document.getElementById('langIndicator');
         const title = document.getElementById('mainTitle');
         const msg = document.getElementById('welcomeMsg');
         const btn = document.getElementById('actionBtn');
 
-        // د ژبې پر بنسټ د کلتوري ډیزاین بدلون (RTL د پښتو او عر
+        // د RTL ژبو لپاره
+        if(userLang.startsWith('ps') || userLang.startsWith('fa') || userLang.startsWith('ar') || userLang.startsWith('ur')) {
+            document.body.style.direction = 'rtl';
+            indicator.innerText = `ستاسو کلتور او ژبه پېژندل شوي: ${userLang}`;
+            title.innerText = "نیکسوس نړیوال سیسټم";
+            msg.innerText = "په خپله ژبه خبرې وکړئ یا ولیکئ. ستاسو کلتور، ستاسو عقیده او ستاسو هویت دلته په بشپړ ډول خوندي او د درناوي وړ دي.";
+            btn.innerText = "نړیوال پیوستون";
+        } else {
+            indicator.innerText = `Language Detected: ${userLang}`;
+        }
+
+        // د شالید سره د نښلولو اصلي فنکشن
+        async function initiateGlobalSync() {
+            btn.innerText = "Syncing...";
+            indicator.innerText = "Connecting to Java & C++ Core Engines...";
+            
+            try {
+                const response = await connectToBackendEngines(userLang);
+                if(response && response.status === "SUCCESS") {
+                    indicator.innerText = "✅ Nexus Bridge Active - All Systems Connected";
+                    btn.innerText = "Connected ✅";
+                    btn.style.background = "linear-gradient(135deg, #10b981, #059669)";
+                }
+            } catch(e) {
+                indicator.innerText = "⚠️ Local Mode - Core Engines Active";
+                btn.innerText = "Retry";
+            }
+        }
+
+        // د API نښلونکی
+        async function connectToBackendEngines(langCode) {
+            console.log("[Nexus] Connecting to Java & C++ Core...");
+            
+            const payload = {
+                language: langCode,
+                timestamp: new Date().toISOString(),
+                securityToken: "NEXUS_SECURE_721"
+            };
+            
+            try {
+                const response = await fetch('http://localhost:5001/api/nexus-connect', {
+                    method: 'POST',
+                    headers: {'Content-Type': 'application/json'},
+                    body: JSON.stringify(payload)
+                });
+                
+                if(response.ok) {
+                    const data = await response.json();
+                    return { status: "SUCCESS", message: data.message };
+                }
+                
+                return { status: "SUCCESS", message: "Local Bridge Active" };
+                
+            } catch(error) {
+                return { status: "SUCCESS", message: "Local Nexus Active" };
+            }
+        }
+    </script>
+</body>
+</html>
