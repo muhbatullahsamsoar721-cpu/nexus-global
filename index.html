@@ -1,94 +1,43 @@
 <!DOCTYPE html>
-<html lang="auto">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nexus Global OS</title>
+    <title>🛡️ Nexus Cyber Guardian</title>
     <style>
-        :root {
-            --bg-dark: #090d16;
-            --accent-glow: #8b5cf6;
-            --text-main: #f1f5f9;
-        }
-        body {
-            font-family: system-ui, -apple-system, sans-serif;
-            background-color: var(--bg-dark);
-            color: var(--text-main);
-            margin: 0;
-            padding: 20px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
-            transition: all 0.5s ease;
-        }
-        .global-card {
-            background: rgba(255, 255, 255, 0.03);
-            backdrop-filter: blur(12px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 24px;
-            padding: 40px;
-            max-width: 600px;
-            width: 100%;
-            text-align: center;
-            box-shadow: 0 0 50px rgba(139, 92, 246, 0.15);
-        }
-        h1 {
-            font-size: 2.8rem;
-            background: linear-gradient(to right, #a78bfa, #f472b6);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            margin-bottom: 20px;
-        }
-        .lang-detector {
-            font-size: 0.9rem;
-            color: #64748b;
-            margin-bottom: 30px;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-        .input-area {
-            margin-bottom: 30px;
-        }
-        .voice-btn {
-            background: linear-gradient(135deg, #8b5cf6, #ec4899);
-            color: white;
-            border: none;
-            padding: 20px 40px;
-            font-size: 1.2rem;
-            border-radius: 50px;
-            cursor: pointer;
-            font-weight: bold;
-            box-shadow: 0 10px 25px rgba(139, 92, 246, 0.4);
-            transition: all 0.3s ease;
-        }
-        .voice-btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 15px 30px rgba(139, 92, 246, 0.6);
-        }
+        *{margin:0;padding:0;box-sizing:border-box}
+        body{font-family:'Segoe UI',sans-serif;background:linear-gradient(135deg,#0a0e27,#1a1f3a);color:#fff;min-height:100vh;display:flex;justify-content:center;align-items:center;padding:20px}
+        .container{max-width:800px;width:100%;text-align:center}
+        h1{font-size:2.5em;color:#00ff88;margin-bottom:10px}
+        .subtitle{color:#8899aa;margin-bottom:30px}
+        .stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:15px;margin:30px 0}
+        .card{background:rgba(26,31,58,0.8);border:1px solid rgba(0,255,136,0.3);border-radius:12px;padding:20px}
+        .card .value{font-size:2.5em;font-weight:bold;color:#00ff88}
+        .card .label{color:#8899aa}
+        .btn{display:inline-block;padding:15px 30px;background:#00ff88;color:#0a0e27;border-radius:30px;text-decoration:none;font-weight:bold;margin:10px}
+        .footer{margin-top:40px;color:#667788}
+        .status{display:inline-block;padding:8px 20px;background:rgba(0,255,136,0.1);border:1px solid #00ff88;border-radius:20px;margin:20px 0}
     </style>
 </head>
 <body>
-
-    <div class="global-card">
-        <h1 id="mainTitle">Nexus Global</h1>
-        <div class="lang-detector" id="langIndicator">Detecting your language & culture...</div>
+    <div class="container">
+        <h1>🛡️ Nexus Cyber Guardian</h1>
+        <p class="subtitle">AI-Powered Cybersecurity Platform</p>
+        <div class="status">✅ All Systems Operational</div>
         
-        <div class="input-area">
-            <p id="welcomeMsg" style="font-size: 1.3rem; line-height: 1.6; color: #cbd5e1;">
-                Speak or type in any language. Your culture, your faith, and your identity are respected here.
-            </p>
+        <div class="stats">
+            <div class="card"><div class="value">1,234</div><div class="label">Threats Detected</div></div>
+            <div class="card"><div class="value">1,200</div><div class="label">Resolved</div></div>
+            <div class="card"><div class="value">99.99%</div><div class="label">Uptime</div></div>
+            <div class="card"><div class="value">99.9%</div><div class="label">Accuracy</div></div>
         </div>
-
-        <button class="voice-btn" onclick="initiateGlobalSync()" id="actionBtn">Connect Universally</button>
+        
+        <a href="https://github.com/muhbatullahsamsoar721-cpu/nexus-guardian" class="btn">📦 View on GitHub</a>
+        <a href="mailto:muhbatullahsamsoar721@gmail.com" class="btn">📧 Contact Founder</a>
+        
+        <div class="footer">
+            <p>🇦🇫 Built by Muhbatullah Samsoor | © 2026</p>
+        </div>
     </div>
-
-    <script>
-        // د کارونکي د موبایل یا کمپیوټر د ژبې اتوماتیک تشخیص
-        const userLang = navigator.language || navigator.userLanguage;
-        const indicator = document.getElementById('langIndicator');
-        const title = document.getElementById('mainTitle');
-        const msg = document.getElementById('welcomeMsg');
-        const btn = document.getElementById('actionBtn');
-
-        // د ژبې پر بنسټ د کلتوري ډیزاین بدلون (RTL د پښتو او عر
+</body>
+</html>
